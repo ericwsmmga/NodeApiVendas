@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { hash } from 'bcryptjs';
 import { getCustomRepository, getRepository } from 'typeorm';
-import UsersRepository from '../repositories/UserRepository';
+import UsersRepository from '../typeorm/repositories/UserRepository';
 import User from '../typeorm/entities/User';
 
 interface IRequest {

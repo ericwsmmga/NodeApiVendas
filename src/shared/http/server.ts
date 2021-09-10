@@ -6,7 +6,7 @@ import { errors } from 'celebrate';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
-import uploadConfig from '@config/upload'
+import uploadConfig from '@config/upload';
 const app = express();
 
 app.use(cors());
