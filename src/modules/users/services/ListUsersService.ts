@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm';
-import UsersRepository from '../repositories/UserRepository';
+import UsersRepository from '../typeorm/repositories/UserRepository';
 import User from '../typeorm/entities/User';
 
 class ListUsersService {
