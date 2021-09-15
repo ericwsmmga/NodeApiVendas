@@ -1,6 +1,4 @@
 import { Request, Response } from 'express';
-import CreateUserService from '../services/CreateUserService';
-import ListUsersService from '../services/ListUsersService';
 import SendForgotPasswordEmailService from '../services/SendForgotPasswordEmailService';
 
 export default class ForgotPasswordController {
