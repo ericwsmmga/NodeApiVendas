@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import { hash } from 'bcryptjs';
-import { getCustomRepository, getRepository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import UsersRepository from '../typeorm/repositories/UserRepository';
 import User from '../typeorm/entities/User';
 
@@ -17,10 +17,14 @@ class CreateUserService {
     if (emailExist) {
       throw new AppError('Email adress already used');
     }
-    
+
     const hashedPassword = await hash(password, 8);
-    
-    const user = usersRepository.create({name,email,password: hashedPassword });
+
+    const user = usersRepository.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
     await usersRepository.save(user);
 
