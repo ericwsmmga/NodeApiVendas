@@ -1,9 +1,10 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import path from 'path';
-import UsersRepository from '../typeorm/repositories/UserRepository';
+import UsersRepository from '../typeorm/repositories/UsersRepository';
 import UserTokensRepository from '../typeorm/repositories/UserTokensRepository';
 import EtherealMail from '@config/mail/EtherealMail';
+
 interface IRequest {
   email: string;
 }
@@ -33,12 +34,12 @@ class SendForgotPasswordEmailService {
         name: user.name,
         email: user.email,
       },
-      subject: '[API Vendas] Password recovery',
+      subject: '[API Vendas] Recuperação de Senha',
       templateData: {
         file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          link: `http://localgost:3000/reset_password?token=${token}`,
+          link: `http://localhost:3000/reset_password?token=${token}`,
         },
       },
     });

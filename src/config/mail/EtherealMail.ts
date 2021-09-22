@@ -5,8 +5,14 @@ interface IMailContact {
   name: string;
   email: string;
 }
+
 interface ITemplateVariable {
-  [Key: string]: string | number;
+  [key: string]: string | number;
+}
+
+interface IParseMailTemplate {
+  file: string;
+  variables: ITemplateVariable;
 }
 
 interface ISendMail {
@@ -15,10 +21,7 @@ interface ISendMail {
   subject: string;
   templateData: IParseMailTemplate;
 }
-interface IParseMailTemplate {
-  file: string;
-  variables: ITemplateVariable;
-}
+
 export default class EtherealMail {
   static async sendMail({
     to,
@@ -42,8 +45,8 @@ export default class EtherealMail {
 
     const message = await transporter.sendMail({
       from: {
-        name: from?.name || 'Equipe APÍ Vendas',
-        address: from?.email || 'equipe@apivendas.com',
+        name: from?.name || 'Equipe API Vendas',
+        address: from?.email || 'equipe@apivendas.com.br',
       },
       to: {
         name: to.name,
@@ -54,6 +57,6 @@ export default class EtherealMail {
     });
 
     console.log('Message sent: %s', message.messageId);
-    console.log('Preview url: %', nodemailer.getTestMessageUrl(message));
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
   }
 }
