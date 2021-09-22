@@ -2,13 +2,13 @@ import AppError from '@shared/errors/AppError';
 import path from 'path';
 import fs from 'fs';
 import { getCustomRepository } from 'typeorm';
-import UsersRepository from '../typeorm/repositories/UserRepository';
 import User from '../typeorm/entities/User';
+import UsersRepository from '../typeorm/repositories/UsersRepository';
 import uploadConfig from '@config/upload';
 
 interface IRequest {
   user_id: string;
-  avatarFilename?: string;
+  avatarFilename: string;
 }
 
 class UpdateUserAvatarService {
@@ -18,7 +18,7 @@ class UpdateUserAvatarService {
     const user = await usersRepository.findById(user_id);
 
     if (!user) {
-      throw new AppError('User not found');
+      throw new AppError('User not found.');
     }
 
     if (user.avatar) {
@@ -30,7 +30,7 @@ class UpdateUserAvatarService {
       }
     }
 
-    user.avatar = avatarFilename as string;
+    user.avatar = avatarFilename;
 
     await usersRepository.save(user);
 

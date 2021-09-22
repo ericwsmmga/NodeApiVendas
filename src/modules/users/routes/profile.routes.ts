@@ -1,13 +1,14 @@
-import { celebrate, Segments } from 'celebrate';
 import { Router } from 'express';
-import Joi from 'joi';
-import isAuthenticated from '../../../shared/http/middlewares/isAuthenticated';
-import ProfileController from '../controller/ProfileController';
+import { celebrate, Joi, Segments } from 'celebrate';
+import isAuthenticated from '@shared/http/middlewares/isAuthenticated';
+import ProfileController from '../controllers/ProfileController';
 
 const profileRouter = Router();
 const profileController = new ProfileController();
 
 profileRouter.use(isAuthenticated);
+
+profileRouter.get('/', profileController.show);
 
 profileRouter.put(
   '/',
@@ -27,7 +28,5 @@ profileRouter.put(
   }),
   profileController.update,
 );
-
-profileRouter.get('/', profileController.show);
 
 export default profileRouter;
