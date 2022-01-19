@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { Secret, verify } from 'jsonwebtoken';
+import { verify, Secret } from 'jsonwebtoken';
 import AppError from '@shared/errors/AppError';
 import authConfig from '@config/auth';
 

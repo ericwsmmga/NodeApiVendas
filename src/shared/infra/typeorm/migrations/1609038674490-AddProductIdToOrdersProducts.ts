@@ -6,8 +6,7 @@ import {
 } from 'typeorm';
 
 export class AddProductIdToOrdersProducts1609038674490
-  implements MigrationInterface
-{
+  implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn(
       'orders_products',
