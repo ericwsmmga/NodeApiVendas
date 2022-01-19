@@ -13,8 +13,8 @@ export default {
 
   defaults: {
     from: {
-      email: 'contato@aluiziodeveloper.cf',
-      name: 'Jorge Aluizio',
+      email: 'equipe@apivendas.com.br',
+      name: 'Eric William',
     },
   },
 } as IMailConfig;
