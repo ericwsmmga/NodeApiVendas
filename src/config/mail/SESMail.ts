@@ -35,7 +35,7 @@ export default class SESMail {
 
     const transporter = nodemailer.createTransport({
       SES: new aws.SES({
-        apiVersion: '2021-12-01',
+        apiVersion: '2010-12-01',
       }),
     });
 

@@ -15,8 +15,8 @@ interface IUploadConfig {
     };
   };
 }
-const uploadFolder = path.resolve(__dirname, '..', '..', 'uploads');
 
+const uploadFolder = path.resolve(__dirname, '..', '..', 'uploads');
 const tmpFolder = path.resolve(__dirname, '..', '..', 'temp');
 
 export default {
@@ -25,7 +25,7 @@ export default {
   tmpFolder,
   multer: {
     storage: multer.diskStorage({
-      destination: uploadFolder,
+      destination: tmpFolder,
       filename(request, file, callback) {
         const fileHash = crypto.randomBytes(10).toString('hex');
 
