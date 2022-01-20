@@ -6,13 +6,16 @@ import authConfig from '@config/auth';
 import { ICreateSession } from '../domain/models/ICreateSession';
 import { IUserAuthenticated } from '../domain/models/IUserAuthenticated';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
+import { IHashProvider } from '../providers/HashProvider/models/IHashProvider';
 
 @injectable()
 class CreateSessionsService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-  ) {}
+    @inject('HashProvider')
+    private hashProvider: IHashProvider
+    ) {}
 
   public async execute({
     email,
@@ -24,7 +27,7 @@ class CreateSessionsService {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
-    const passwordConfirmed = await compare(password, user.password);
+    const passwordConfirmed = await this.hashProvider.compareHash(password, user.password);
 
     if (!passwordConfirmed) {
       throw new AppError('Incorrect email/password combination.', 401);
